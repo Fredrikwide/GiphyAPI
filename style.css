@@ -185,7 +185,6 @@ body {
   align-items: center;
   width: 400px;
   height: 200px;
-  border: 6px solid #333;
   border-radius: 8px;
   background-color: #FFFFFF;
   cursor: pointer;
@@ -200,15 +199,11 @@ body {
   align-items: center;
   width: 400px;
   height: 200px;
-  border: 6px solid #333;
   border-radius: 8px;
   background-color: #FFFFFF;
   cursor: pointer;
 }
 
-.grid-box:hover {
-  background-color: #333;
-}
 
 .close {
   display: flex;
@@ -305,7 +300,6 @@ body {
     width: 100px;
     height: 100px;
     border-radius: 8px;
-    background-color: #FFFFFF;
     cursor: pointer;
   }
 

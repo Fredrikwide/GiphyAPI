@@ -1,5 +1,5 @@
 
-let apiKey = "ehdaANlah7WEHjCAweuwDcRB17JnCWyb"
+let apiKey = ""
 // griphy fetch trending
 let trendingURL = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}`
 
@@ -184,7 +184,7 @@ const renderImages = async (gifs, num) => {
 
   gifs.forEach((gif, index) => {
   index = num++
-  console.log(num)
+
   let gridItem = createCard()
   let gridItemGif = createImage(gif, num)
 

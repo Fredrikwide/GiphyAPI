@@ -25,9 +25,12 @@ let observerOptions = {
   rootMargin: "0px 0px 100px 0px"
 }
 
+
+
+let randomImages = []
 let i= 0;
 const randomizer = async (num) => {
-  let randomImages = []
+  randomImages = []
 
 
   while(num--){
@@ -72,12 +75,6 @@ const setNumTostring = num => num.toString()
 
 
 
-let incNum = 0;
-let decNum = 0;
-
-
-
-
 
 const createImagePage = (strPrev, strcurrent, strNext ) => {
   
@@ -100,7 +97,7 @@ const createImagePage = (strPrev, strcurrent, strNext ) => {
   overlay.classList.add("active")
   wrapperBox.classList.add("flexWrap")
   prevImageBox.classList.add("grid-box")
-  closeButtonBox.classList.add("grid-box")
+  closeButtonBox.classList.add("grid-button-box")
   nextImageBox.classList.add("grid-box")
 
   overlay.appendChild(currentImageBox)
@@ -118,8 +115,8 @@ const createImagePage = (strPrev, strcurrent, strNext ) => {
   closeButtonBox.appendChild(closeButton)
   closeButton.appendChild(closeButtonIcon)
 
-  prevImageBox.addEventListener('click', handleClickPrevious)
-  nextImageBox.addEventListener('click', handleNext)
+  prevImageBox.addEventListener('click', getElements)
+  nextImageBox.addEventListener('click', getElements)
 
   closeButtonIcon.addEventListener('click',()  => closeModal(overlay))
 
@@ -147,13 +144,25 @@ let closeModal = (overlay) => {
 }
 
 
-const getElements = (e) => {
-
+const getElements = async (e) => {
+  let overlay = document.querySelector(".overlay")
+  if(overlay) {
+    closeModal(overlay)
+  }
+  let images = document.querySelectorAll(".image-grid > img")
   let previous = Number(e.target.id) -1;
   let current = Number(e.target.id)
   let next = Number(e.target.id) +1 
   if(previous <= 0){
     return
+  }
+  else if(next >= images.length){
+  let getImgRes = await fetch(randomURL)
+  let getImgJson = await getImgRes.json()
+  let data = await getImgJson.data
+  let newImage = createImage(data.images.downsized.url, next+1, obs = false )
+  randomImages.push(newImage)
+  images = document.querySelectorAll(".image-grid > img")
   }
   let prev = setNumTostring(previous)
   let curr = setNumTostring(current)

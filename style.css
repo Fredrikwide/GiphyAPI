@@ -1,0 +1,321 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+}
+
+body {
+  background-color: #ECEEF0;
+}
+
+.nav-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+  height: 60px;
+  margin-bottom: 5px;
+}
+
+.logo-container {
+  padding: 10px;
+  margin-left: 1rem;
+}
+
+#cdon {
+  width: 80px;
+  height: 25px;
+}
+
+#refresh {
+  margin-right: 5px;
+  cursor: pointer;
+
+}
+
+#refresh::before,
+#refresh:active,
+#refresh::after {
+  animation: spin 1s;
+}
+
+
+.loading {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.loadingSpinner {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 6px solid #a4ebc3;
+  border-top: 6px solid #00C356;
+  margin-bottom: 8rem;
+  animation: spin 2s linear infinite;
+}
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.flexWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 100%;
+}
+
+.image-grid {
+  position: absolute;
+  z-index: 1;
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(160px, 1fr));
+  grid-gap: 5px;
+}
+
+.hidden {
+  position: absolute;
+  display: none;
+  width: 0;
+  height: 0;
+  z-index: -999;
+}
+
+.overlay.active {
+  position: absolute;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffffb6;
+}
+
+
+
+.card {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 16px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #FFFFFF;
+}
+
+.image-grid img {
+
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+}
+
+.overlay.active {
+  position: absolute;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffffb6;
+}
+
+.imageModal {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  max-height: 600px;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  padding: 0px 2px;
+
+}
+
+.imageModal img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.modalBottom {
+
+  display: grid;
+  margin-bottom: 2rem;
+  max-width: 100vw;
+  height: 100%;
+  gap: 5rem;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+.grid-box {
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 200px;
+  border: 6px solid #333;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.grid-box:hover {
+  background-color: #333;
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.close img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 16px solid #A7ABAF;
+  background-color: #A7ABAF;
+}
+
+
+
+.grid-box>img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .overlay.active {
+    position: absolute;
+    overflow-y: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 100%;
+    background-color: #ECEEF0;
+  }
+
+  .imageModal {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100vw;
+    max-height: 330px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+  }
+
+  .imageModal img {
+    object-fit: contain;
+    height: 300px;
+    max-width: 330px;
+    cursor: pointer;
+  }
+
+  .modalBottom {
+    display: grid;
+    overflow-x: hidden;
+    margin-bottom: 2rem;
+    max-width: 100vw;
+    height: 100%;
+    gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+
+  }
+
+  .grid-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+  }
+
+  .grid-box:nth-child(2) {
+    background-color: none;
+  }
+
+
+  .grid-box img {
+    object-fit: contain;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+  }
+
+  .close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+  }
+
+  .close img {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 10px solid #A7ABAF;
+    background-color: #A7ABAF;
+  }
+
+  .flexWrap {
+    max-width: 100vw;
+
+  }
+
+
+}
